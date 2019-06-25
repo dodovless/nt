@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>思维导图</title>
+
+	<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+
+	<!-- bower:css -->
+	<link rel="stylesheet" href="kityminder/bower_components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="kityminder/bower_components/codemirror/lib/codemirror.css" />
+	<link rel="stylesheet" href="kityminder/bower_components/hotbox/hotbox.css" />
+	<link rel="stylesheet" href="kityminder/bower_components/kityminder-core/dist/kityminder.core.css" />
+	<link rel="stylesheet" href="kityminder/bower_components/color-picker/dist/color-picker.min.css" />
+	<!-- endbower -->
+
+	<link rel="stylesheet" href="kityminder/kityminder.editor.min.css">
+
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+		h1.editor-title {
+			background: #393F4F;
+			color: white;
+			margin: 0;
+			height: 40px;
+			font-size: 14px;
+			line-height: 40px;
+			font-family: 'Hiragino Sans GB', 'Arial', 'Microsoft Yahei';
+			font-weight: normal;
+			padding: 0 20px;
+		}
+		div.minder-editor-container {
+			position: absolute;
+			top: 40px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+        div.dataButton {
+            background: #6A88AA;
+            color: white;
+            display: inline;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 4px;
+            cursor: pointer;
+        }
+	</style>
+</head>
+<body ng-app="kityminderDemo" ng-controller="MainController">
+<h1 class="editor-title">思维导图 『=DODO=』
+    <div class="dataButton" onclick="importData()">导入数据</div>
+    <div class="dataButton" onclick="exportData()">导出数据</div>
+</h1>
+
+<kityminder-editor on-init="initEditor(editor, minder)"></kityminder-editor>
+</body>
+
+<!-- bower:js -->
+<script src="kityminder/bower_components/jquery/dist/jquery.js"></script>
+<script src="kityminder/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="kityminder/bower_components/angular/angular.js"></script>
+<script src="kityminder/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="kityminder/bower_components/codemirror/lib/codemirror.js"></script>
+<script src="kityminder/bower_components/codemirror/mode/xml/xml.js"></script>
+<script src="kityminder/bower_components/codemirror/mode/javascript/javascript.js"></script>
+<script src="kityminder/bower_components/codemirror/mode/css/css.js"></script>
+<script src="kityminder/bower_components/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="kityminder/bower_components/codemirror/mode/markdown/markdown.js"></script>
+<script src="kityminder/bower_components/codemirror/addon/mode/overlay.js"></script>
+<script src="kityminder/bower_components/codemirror/mode/gfm/gfm.js"></script>
+<script src="kityminder/bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+<script src="kityminder/bower_components/marked/lib/marked.js"></script>
+<script src="kityminder/bower_components/kity/dist/kity.min.js"></script>
+<script src="kityminder/bower_components/hotbox/hotbox.js"></script>
+<script src="kityminder/bower_components/json-diff/json-diff.js"></script>
+<script src="kityminder/bower_components/kityminder-core/dist/kityminder.core.min.js"></script>
+<script src="kityminder/bower_components/color-picker/dist/color-picker.min.js"></script>
+<!-- endbower -->
+
+<script src="kityminder/kityminder.editor.min.js"></script>
+<script src="kityminder/store.js"></script>
+
+
+<script>
+	angular.module('kityminderDemo', ['kityminderEditor'])
+			.config(function (configProvider) {
+				//configProvider.set('imageUpload', '../server/imageUpload.php');
+			})
+			.controller('MainController', function($scope) {
+				$scope.initEditor = function(editor, minder) {
+					window.editor = editor;
+					window.minder = minder;
+				};
+			});
+
+</script>
+
+</html>
